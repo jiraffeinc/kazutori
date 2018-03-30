@@ -18,7 +18,7 @@ module Kazutori
         if object.respond_to?(:to_global_id)
           object.to_global_id.to_s
         else
-          object.to_s
+          object.to_sgit
         end
       end.join(':')
     end
