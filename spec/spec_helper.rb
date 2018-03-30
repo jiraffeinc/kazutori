@@ -11,4 +11,6 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+  ENV["REDIS_URL"] = "redis://127.0.0.1:6379/0"
+  Time.zone = "Tokyo"
 end
