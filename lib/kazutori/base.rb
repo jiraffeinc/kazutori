@@ -16,6 +16,10 @@ module Kazutori
       @redis.mget(*range_keys_for(range)).map(&:to_i)
     end
 
+    def delete_counts(range)
+      @redis.del(*range_keys_for(range))
+    end
+
     private
     def solve_namespace(*namespace)
       namespace.flat_map do |object|
