@@ -1,15 +1,16 @@
 RSpec.describe Kazutori::Hourly do
   before { Redis.new.flushdb }
-  describe "#count_up" do
-    it "count up" do
-      kazutori = Kazutori::Hourly.new
-      expect(kazutori.count_up).to eq 1
-      expect(kazutori.count_up).to eq 2
-      expect(kazutori.count_up(1.hours.ago)).to eq 1
-      expect(kazutori.count_up(1.hours.ago)).to eq 2
-      kazutori = Kazutori::Hourly.new("other")
-      expect(kazutori.count_up).to eq 1
-      expect(kazutori.count_up).to eq 2
-    end
+  it "works" do
+    kazutori = Kazutori::Hourly.new
+    expect(kazutori.count_up).to eq 1
+    expect(kazutori.count_up).to eq 2
+    expect(kazutori.count_up(1.hours.ago)).to eq 1
+    expect(kazutori.count_up(1.hours.ago)).to eq 2
+    kazutori.count_up(2.hours.ago)
+    expect(kazutori.get_counts(1.hours.ago..Time.zone.now)).to eq [2, 2]
+    expect(kazutori.get_counts(2.hours.ago..2.hours.ago)).to eq [1]
+    kazutori = Kazutori::Hourly.new("other")
+    expect(kazutori.count_up).to eq 1
+    expect(kazutori.count_up).to eq 2
   end
 end

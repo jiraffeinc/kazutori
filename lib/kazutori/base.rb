@@ -12,6 +12,10 @@ module Kazutori
       @redis.incr(key_for(time)).to_i
     end
 
+    def get_counts(range)
+      @redis.mget(*range_keys_for(range)).map(&:to_i)
+    end
+
     private
     def solve_namespace(*namespace)
       namespace.flat_map do |object|
@@ -24,6 +28,10 @@ module Kazutori
     end
 
     def key_for(time)
+      raise NotImplementedError
+    end
+
+    def range_keys_for(range)
       raise NotImplementedError
     end
   end
