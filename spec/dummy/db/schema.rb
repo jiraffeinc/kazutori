@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180331073323) do
     t.datetime "hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["countable_type", "countable_id"], name: "index_kazutori_counts_on_countable_type_and_countable_id"
+    t.index ["countable_type", "countable_id", "hour"], name: "index_coutable_hour", unique: true
   end
 
 end
