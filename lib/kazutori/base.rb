@@ -3,9 +3,19 @@ require 'globalid'
 require 'active_support/time'
 
 module Kazutori
+  REG_SUFFIX = /:[^:]+\z/
+  def self.redis
+    Redis.new(url: ENV["REDIS_URL"])
+  end
+
+  def self.namespaces
+    redis.keys.map{|key| key.gsub(REG_SUFFIX, '')}
+  end
+
   class Base
+
     def initialize(*args)
-      @redis = Redis::Namespace.new solve_namespace(args), redis: Redis.new(url: ENV["REDIS_URL"])
+      @redis = Redis::Namespace.new solve_namespace(args), redis: Kazutori.redis
     end
 
     def count_up(time=Time.zone.now)
@@ -23,6 +33,10 @@ module Kazutori
     def flush_counts!(range)
       yield get_counts(range)
       delete_counts(range)
+    end
+
+    def keys
+      @redis.keys
     end
 
     private

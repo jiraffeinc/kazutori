@@ -15,6 +15,8 @@ RSpec.describe Kazutori::Hourly do
     kazutori = Kazutori::Hourly.new("other")
     expect(kazutori.count_up).to eq 1
     expect(kazutori.count_up).to eq 2
+    expect(kazutori.keys).to eq [Time.zone.now.beginning_of_hour.to_i.to_s]
+    expect(Kazutori.namespaces).to eq ["", "other"]
     kazutori.flush_counts!(Time.zone.now..Time.zone.now) do |counts|
       expect(counts).to eq [2]
     end
