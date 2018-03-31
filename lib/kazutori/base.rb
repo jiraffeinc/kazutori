@@ -20,6 +20,11 @@ module Kazutori
       @redis.del(*range_keys_for(range))
     end
 
+    def flush_counts!(range)
+      yield get_counts(range)
+      delete_counts(range)
+    end
+
     private
     def solve_namespace(*namespace)
       namespace.flat_map do |object|

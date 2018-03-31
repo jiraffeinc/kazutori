@@ -11,8 +11,13 @@ RSpec.describe Kazutori::Hourly do
     expect(kazutori.get_counts(2.hours.ago..2.hours.ago)).to eq [1]
     kazutori.delete_counts(1.hours.ago..Time.zone.now)
     expect(kazutori.get_counts(1.hours.ago..Time.zone.now)).to eq [0, 0]
+
     kazutori = Kazutori::Hourly.new("other")
     expect(kazutori.count_up).to eq 1
     expect(kazutori.count_up).to eq 2
+    kazutori.flush_counts!(Time.zone.now..Time.zone.now) do |counts|
+      expect(counts).to eq [2]
+    end
+    expect(kazutori.get_counts(Time.zone.now..Time.zone.now)).to eq [0]
   end
 end
