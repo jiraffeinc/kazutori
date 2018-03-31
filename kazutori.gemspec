@@ -36,4 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'redis'
   spec.add_dependency 'redis-namespace'
   spec.add_dependency 'globalid'
+  spec.add_dependency "rails", "~> 5.1.4"
+  spec.add_dependency "sqlite3"
+  spec.add_dependency "rspec-rails"
 end
