@@ -26,7 +26,7 @@ module Kazutori
     end
 
     private
-    def solve_namespace(*namespace)
+    def solve_namespace(namespace)
       namespace.flat_map do |object|
         if object.respond_to?(:to_global_id)
           object.to_global_id.to_s
