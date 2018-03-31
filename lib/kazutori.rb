@@ -1,6 +1,5 @@
-require "kazutori/version"
-require "kazutori/base"
-require "kazutori/hourly"
+require "kazutori/engine"
 
 module Kazutori
+  # Your code goes here...
 end
