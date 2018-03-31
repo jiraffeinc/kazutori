@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "kazutori"
+require 'active_model'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -13,4 +14,16 @@ RSpec.configure do |config|
   end
   ENV["REDIS_URL"] = "redis://127.0.0.1:6379/0"
   Time.zone = "Tokyo"
+end
+
+GlobalID.app = "kazutori"
+class Item
+  attr_reader :id
+  def initialize(id)
+    @id = id
+  end
+
+  def to_global_id
+    GlobalID.create(Item.new(1))
+  end
 end
