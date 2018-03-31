@@ -6,8 +6,6 @@ PATH
       rails (~> 5.1.4)
       redis
       redis-namespace
-      rspec-rails
-      sqlite3
 
 GEM
   remote: https://rubygems.org/
@@ -122,6 +120,8 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -146,6 +146,9 @@ DEPENDENCIES
   kazutori!
   rake (~> 10.0)
   rspec (~> 3.0)
+  rspec-rails
+  shoulda-matchers
+  sqlite3
 
 BUNDLED WITH
    1.16.1
