@@ -31,8 +31,7 @@ module Kazutori
     end
 
     def flush_counts!(range)
-      yield get_counts(range)
-      delete_counts(range)
+      yield(get_counts(range)).tap{ delete_counts(range) }
     end
 
     def keys
