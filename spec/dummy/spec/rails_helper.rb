@@ -6,6 +6,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require File.expand_path('../../../../app/models/kazutori/count', __FILE__)
+require File.expand_path('../../../../app/jobs/kazutori/count_flushing_job', __FILE__)
 require 'shoulda-matchers'
 
 # Add additional requires below this line. Rails is not loaded until this point!

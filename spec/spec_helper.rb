@@ -1,6 +1,7 @@
 require "bundler/setup"
 require "kazutori"
 require 'active_model'
+require 'timecop'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -25,5 +26,29 @@ class Item
 
   def to_global_id
     GlobalID.create(Item.new(1))
+  end
+
+  def self.unscoped
+    Item
+  end
+
+  def self.find_in_batches
+    yield [Item.new(1)]
+  end
+
+  def self.primary_key
+    :id
+  end
+
+  def _read_attribute(attr)
+    instance_variable_get("@#{attr}")
+  end
+
+  def self.base_class
+    Item
+  end
+
+  def marked_for_destruction?
+    false
   end
 end
