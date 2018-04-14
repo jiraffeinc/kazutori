@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["yalab"]
   spec.email         = ["rudeboyjet@gmail.com"]
 
-  spec.summary       = "kazutori is provide Redis count."
-  spec.description   = "kazutori is provide Redis count."
+  spec.summary       = "kazutori is a Redis-based counter."
+  spec.description   = "kazutori is a Redis-based counter."
   spec.homepage      = "https://github.com/jiraffeinc/kazutori"
   spec.license       = "MIT"
 
