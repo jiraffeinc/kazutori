@@ -6,7 +6,7 @@ class CreateKazutoriCounts < ActiveRecord::Migration[5.1]
       t.datetime :hour
 
       t.timestamps
-      t.index [:countable_type, :countable_id, :hour], unique: true, name: "index_coutable_hour"
+      t.index [:countable_type, :countable_id, :hour], unique: true, name: "index_coutable_hour", length: {countable_type: 191}
     end
   end
 end
