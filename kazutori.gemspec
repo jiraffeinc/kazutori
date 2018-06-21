@@ -41,6 +41,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'redis'
   spec.add_dependency 'redis-namespace'
   spec.add_dependency 'globalid'
-  spec.add_dependency "rails", "~> 5.1.4"
+  spec.add_dependency "rails", ">= 5.0", "< 6"
   spec.add_dependency 'activerecord-import'
 end
